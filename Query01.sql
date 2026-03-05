@@ -44,3 +44,24 @@ select top 5
 product_name, unit_price 
 from products
 order by unit_price DESC
+
+--Task 6: Add a new column linkedin_url VARCHAR(300) 
+--to the employees table. Then drop it
+
+alter table employees
+add linkedin_url varchar(300) null
+
+--select * from employees
+
+alter table employees
+drop column linkedin_url
+
+--select * from employees
+
+--Task 7:List all employees who do NOT have a manager 
+--(i.e., manager_id is NULL). These are top-level executives.
+
+select 
+emp_id, first_name, last_name
+from employees
+where manager_id is NULL 
