@@ -68,4 +68,20 @@ select product_name, stock_qty
 from products
 where is_active=1 and stock_qty=(select min(stock_qty) from products)
 
---Task 8: Find all employees hired in the year 2020. Then find all orders placed in Q4 2023 (Oct–Dec)
+--Task 8.1: Find all employees hired in the year 2020.
+select emp_id, first_name, last_name, hire_date
+from employees
+where hire_date like '2020%'
+
+--Task 8.2: Find all orders placed in Q4 2023 (Oct–Dec)
+select order_id, customer_id, emp_id from orders
+where order_date between '2023-10-01' AND '2023-12-31'
+
+--Task 8.3:Find all employees hired in the year 2020. Then find all orders placed in Q4 2023 (Oct–Dec).
+select emp_id, first_name, last_name, hire_date
+from employees
+where YEAR(hire_date) = 2020
+and emp_id in (
+    select emp_id
+    from orders
+    where order_date between '2023-10-01' and '2023-12-31')
