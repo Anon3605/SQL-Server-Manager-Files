@@ -60,9 +60,12 @@ from employees
 order by salary DESC
 
 --Task 7.2: Find the total revenue from all Paid invoices.
-
+--select * from INFORMATION_SCHEMA.TABLES
+select sum(paid_amount) as total_revenue from invoices
 
 --Task 7.3: Find the product with the lowest stock_qty (that is still active).
-
+select product_name, stock_qty
+from products
+where is_active=1 and stock_qty=(select min(stock_qty) from products)
 
 --Task 8: Find all employees hired in the year 2020. Then find all orders placed in Q4 2023 (Oct–Dec)
