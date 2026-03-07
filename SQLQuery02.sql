@@ -30,10 +30,15 @@ group by dept_id
 order by total_employee asc
 
 --Task 5: Find departments where the total salary bill exceeds 300,000. Show dept_id and the total.
-
+select dept_id from employees 
+group by dept_id
+having sum(salary)>300000
+ 
 
 --Task 6: Count how many orders are in each status (Pending, Processing, Shipped, Delivered, Cancelled).
-
+select status, count(order_id) as total_orders
+from orders
+group by status
 
 --Task 7.1: Find the highest and lowest-paid employees.
 
