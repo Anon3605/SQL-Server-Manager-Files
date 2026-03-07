@@ -41,7 +41,23 @@ from orders
 group by status
 
 --Task 7.1: Find the highest and lowest-paid employees.
+select emp_id, first_name, last_name, salary
+from employees
+where salary=(select max(salary) from employees)
+or
+salary=(select min(salary) from employees)
 
+--Alt 01
+select top 1 
+emp_id, first_name, last_name, salary
+from employees
+order by salary ASC
+
+--Alt 02
+select top 1 
+emp_id, first_name, last_name, salary
+from employees
+order by salary DESC
 
 --Task 7.2: Find the total revenue from all Paid invoices.
 
