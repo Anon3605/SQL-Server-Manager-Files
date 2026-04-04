@@ -15,7 +15,8 @@ where TABLE_NAME='employees'
 --Then rewrite it to fetch only dept_name and budget, ordered by budget DESC.
 
 select 
-dept_name, budget
+    dept_name, 
+    budget
 from departments
 order by budget desc
 
@@ -23,37 +24,41 @@ order by budget desc
 --calculate salary * 12 as annual_salary for all employees.
 
 select 
-first_name, last_name, 
-salary*12 as anual_salary 
+    first_name, 
+    last_name, 
+    salary*12 as anual_salary 
 from employees
 
 --Task 4: Find all unique job titles in the company. 
 --How many distinct job titles exist?
 
 select distinct
-job_title 
+    job_title 
 from employees
 
 select
-COUNT(distinct job_title) as total_titles
+    COUNT(distinct job_title) as total_titles
 from employees
 
 --Task 5: Find the 5 most expensive products by unit_price.
 
 select top 5
-product_name, unit_price 
+    product_name, 
+    unit_price 
 from products
 order by unit_price DESC
 
 --Task 6: Add a new column linkedin_url VARCHAR(300) 
 --to the employees table. Then drop it
 
-alter table employees
+alter table 
+    employees
 add linkedin_url varchar(300) null
 
 --select * from employees
 
-alter table employees
+alter table 
+    employees
 drop column linkedin_url
 
 --select * from employees
@@ -62,6 +67,8 @@ drop column linkedin_url
 --(i.e., manager_id is NULL). These are top-level executives.
 
 select 
-emp_id, first_name, last_name
+    emp_id, 
+    first_name, 
+    last_name
 from employees
 where manager_id is NULL 
