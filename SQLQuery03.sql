@@ -31,7 +31,8 @@ on orders.emp_id=employees.emp_id
 --select * from orders
 --select * from customers
 
-select *
+select 
+    *
 from customers
 left join orders
 on customers.customer_id=orders.customer_id
@@ -90,9 +91,8 @@ group by c.customer_id
 order by c.customer_id DESC
 
 --Task 7: Create a single list of all locations — combining departments.location and customers.city. Remove duplicates. Label each with a source column ('Department' or 'Customer City').
-
-select * from customers
-select * from departments
+--select * from customers
+--select * from departments
 
 select distinct
 	d.location as location,
@@ -106,7 +106,6 @@ from customers as c
 order by source_name, location;
 
 --Task 8: Find products that have NEVER appeared in any order_items record.
-
 --select * from order_items;
 --select * from products;
 
@@ -153,17 +152,22 @@ LEFT JOIN order_items AS oi ON p.product_id = oi.product_id
 WHERE oi.product_id IS NULL;
 
 --Way:05
-SELECT product_id, product_name, unit_price FROM products
-
+SELECT 
+    product_id, 
+    product_name, 
+    unit_price 
+FROM products
 EXCEPT
-
-SELECT p.product_id, p.product_name, p.unit_price 
+SELECT 
+    p.product_id, 
+    p.product_name, 
+    p.unit_price 
 FROM products AS p
 JOIN order_items AS oi ON p.product_id = oi.product_id;
 
 --Task 9: Find the top 3 best-selling products by total revenue (quantity × unit_price × (1 - discount/100)).
-select * from products
-select * from INFORMATION_SCHEMA.TABLES
+--select * from products
+--select * from INFORMATION_SCHEMA.TABLES
 
 SELECT TOP 3
     p.product_id,
