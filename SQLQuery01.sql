@@ -7,7 +7,7 @@ use AcmeCorp
 --This gives data about the database and it's tables(object)
 
 select 
-* 
+    * 
 from INFORMATION_SCHEMA.COLUMNS 
 where TABLE_NAME='employees'
 
